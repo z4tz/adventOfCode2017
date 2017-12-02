@@ -23,7 +23,6 @@ def findEvenDivision(numbers):
 
 
 def run(data):
-
     print calcChecksum(data)
     print calcChecksumB(data)
 
