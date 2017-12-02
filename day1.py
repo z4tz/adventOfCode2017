@@ -18,11 +18,10 @@ def solveCaptchaB(captcha):
     return captchaSum*2
 
 
-def run():
-    data = read('inputs/day1.txt')
+def run(data):
     print solveCaptcha(data[0])
     print solveCaptchaB(data[0])
 
 
 if __name__ == "__main__":
-    run()
+    run(read('inputs/day1.txt'))
