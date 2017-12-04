@@ -18,11 +18,11 @@ def validPasswordsB(passwords):
 
 
 def validatePasswordB(password):
-    words = [sorted(word) for word in password.split()]
-    for word in words:
-        if words.count(word) > 1:
-            return False
-    return True
+    words = [''.join(sorted(word)) for word in password.split()]
+    c = set(words)
+    if len(c) == len(words):
+        return True
+    return False
 
 
 def run(data):
