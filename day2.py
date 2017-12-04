@@ -1,5 +1,6 @@
 from InputReader import read
 
+
 def calcChecksum(matrix):
     checksum = 0
     for row in matrix:
@@ -25,6 +26,7 @@ def findEvenDivision(numbers):
 def run(data):
     print calcChecksum(data)
     print calcChecksumB(data)
+
 
 if __name__ == "__main__":
     run(read('inputs/day2.txt'))

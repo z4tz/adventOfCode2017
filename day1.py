@@ -14,7 +14,7 @@ def solveCaptchaB(captcha):
     captchaSum = 0
     for A, B in zip(captcha[:len(captcha)/2-1], captcha[len(captcha)/2:]):
         if A == B:
-           captchaSum += int(A)
+            captchaSum += int(A)
     return captchaSum*2
 
 
