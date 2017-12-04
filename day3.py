@@ -15,9 +15,6 @@ def getDistance(location):
     return int(distanceToMiddleOfSide + (sideLength-1)/2)
 
 
-
-
-
 def getValue(targetValue):
     targetValue = int(targetValue)
     sideLength = int(math.ceil(math.sqrt(targetValue))) + 2
@@ -35,6 +32,7 @@ def getValue(targetValue):
         array[coords[0], coords[1]] = currentSum
         i += 1
     return currentSum
+
 
 def sumNearby(array, coords):
     return int(sum(sum(array[coords[0] - 1:coords[0] + 2, coords[1] - 1:coords[1] + 2])))
@@ -64,7 +62,6 @@ def getCoordinates(number, squareLength):
         coord[1] = sideLength-1
         coord[0] = diff % (sideLength - 1)
     return [int(x + (squareLength - sideLength)/2) for x in coord]
-
 
 
 def run(data):
