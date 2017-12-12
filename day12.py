@@ -3,6 +3,10 @@ from Queue import Queue
 
 
 def getPrograms(data):
+    """Returns a dict with programs as keys and connected programs as values
+    Example data line:
+    '5 <-> 109, 628, 1133, 1605'
+    """
     programs = {}
     for line in data:
         split = line.split(' <-> ')
@@ -11,6 +15,9 @@ def getPrograms(data):
 
 
 def findConnected(programs, startKey = 0):
+    """Returns a set with all connected programs (direct and indirect).
+    startKey defines what program to start looking for connections from.
+    """
     connectedPrograms = {startKey}
     lookupQueue = Queue()
     lookupQueue.put(startKey)
@@ -24,6 +31,8 @@ def findConnected(programs, startKey = 0):
 
 
 def findGroups(programs):
+    """Returns how many groups of programs can be found in the programs dictionary given.
+    A group consists of all programs connected to each other."""
     groups = 0
     while len(programs) > 0:
         group = findConnected(programs, programs.keys()[0])
