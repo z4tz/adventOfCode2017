@@ -18,26 +18,27 @@ def findRegions(data):
         key = data + '-{0}'.format(i)
         binaryHash = ''.join([bin(int(char, 16))[2:].zfill(4) for char in knotHash(key)])
         binaryLists.append([int(numstring) for numstring in binaryHash])
-    arr = np.array(binaryLists)
+    disk = np.array(binaryLists)
     regions = 0
     for x in range(128):
         for y in range(128):
-            if arr[y, x] == 1:
-                removeRegion(arr, [y, x])
+            if disk[y, x] == 1:
+                removeRegion(disk, [y, x])
                 regions += 1
     return regions
 
 
-def removeRegion(array, startCoord):
+def removeRegion(disk, startCoord):
+    """Identifies all parts of a disk region from a given start coordinate and sets them to zeroes"""
     coordinates = [startCoord]
     while coordinates:
         coord = coordinates.pop()
-        for neighbor in getNeighbors(array, coord):
-            coordinates.append(neighbor)
-        array[coord[0], coord[1]] = 0
+        coordinates.extend(getNeighbors(disk, coord))
+        disk[coord[0], coord[1]] = 0
 
 
 def getNeighbors(array, coord):
+    """Returns the coordinates of the occupied adjacent (not diagonal) disk squares"""
     neighbors = []
     for adj in [[1, 0], [-1, 0], [0, 1], [0, -1]]:
         try:
@@ -49,8 +50,8 @@ def getNeighbors(array, coord):
 
 
 def run(data):
-    print usedSpace(data[0])
-    print findRegions(data[0])
+    print 'Squares of disk space used: {0}'.format(usedSpace(data[0]))
+    print 'Number of regions on the disk: {1}'.format(findRegions(data[0]))
 
 
 if __name__ == "__main__":
