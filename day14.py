@@ -51,7 +51,7 @@ def getNeighbors(array, coord):
 
 def run(data):
     print 'Squares of disk space used: {0}'.format(usedSpace(data[0]))
-    print 'Number of regions on the disk: {1}'.format(findRegions(data[0]))
+    print 'Number of regions on the disk: {0}'.format(findRegions(data[0]))
 
 
 if __name__ == "__main__":
