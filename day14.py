@@ -29,7 +29,7 @@ def findRegions(data):
 
 
 def removeRegion(disk, startCoord):
-    """Identifies all parts of a disk region from a given start coordinate and sets them to zeroes"""
+    """Identifies all squares of a disk region from a given start coordinate and sets them to zeroes"""
     coordinates = [startCoord]
     while coordinates:
         coord = coordinates.pop()
