@@ -1,0 +1,114 @@
+Stepwise interpreting and simplification of the assembly input
+
+set b 65
+set c b
+jnz a 2
+jnz 1 5
+mul b 100
+sub b -100000
+set c b
+sub c -17000
+set f 1
+set d 2
+set e 2
+set g d
+mul g e
+sub g b
+jnz g 2
+set f 0
+sub e -1
+set g e
+sub g b
+jnz g -8
+sub d -1
+set g d
+sub g b
+jnz g -13
+jnz f 2
+sub h -1
+set g b
+sub g c
+jnz g 2
+jnz 1 3
+sub b -17
+jnz 1 -23
+
+
+----------------------
+
+
+b = 65
+c = 65
+
+if a != 0
+	b = b * 100 + 10000  # b = 106500
+	c = b + 17000        # c = 123500
+(end if)
+
+	f = 1
+	d = 2
+
+		e = 2
+
+			g = d * e - b
+			if g == 0
+				f = 0
+			e = e + 1
+			g = e - b
+			if g != 0 loop
+
+		d = d + 1
+		g = d - b
+		if g != 0 loop
+
+	if f == 0
+		h = h+1
+	g = b - c
+	if g == 0
+		break
+	b = b + 17
+	loop
+
+----------------------
+
+b = 106500
+c = 123500
+
+
+for b in range(b, c+1, 17):
+	f = 1
+
+	for d in range(2, b+1):
+
+		for e in range(2, b+1):
+			if d*e == b:  # same as if e == b/d, -> true if b/d gives an integer answer
+				f = 0
+	if f == 0:
+		h = h+1
+
+----------------------
+
+b = 106500
+c = 123500
+
+
+for b in range(b, c+1, 17):
+	f = 1
+
+	for d in range(2, b+1):
+
+        if mod(b/d) == 0:  # checking this for [2:(b+1)] up to b tells us if the number is prime or not, f == 0 => not prime
+            f = 0
+	if f == 0:
+		h = h+1
+
+----------------------
+
+b = 106500
+c = 123500
+
+for b in range(b, c+1, 17):
+
+	if not prime(b):
+		h = h+1
+print h
