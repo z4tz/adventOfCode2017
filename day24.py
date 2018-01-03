@@ -15,7 +15,7 @@ class BridgeBuilder:
                 nothingConnected = False
                 copy = notConnected[:]
                 copy.remove(part)
-                self.connectNext(copy, part[part.index(nextConnection)-1], strength + sum(part))
+                self.connectNext(copy, part[part.index(nextConnection) - 1], strength + sum(part))
         if nothingConnected:
             self.possibleBridges.append([strength, len(self.parts) - len(notConnected)])
 
@@ -27,10 +27,11 @@ class BridgeBuilder:
         self.possibleBridges.sort(key=lambda x: (x[1], x[0]))
         return self.possibleBridges[-1][0]
 
+
 def run(data):
     bridgeBuilder = BridgeBuilder(data)
     print 'The strongest bridge is {0} units strong\n' \
-          'The longest bridge is {1} units strong'\
+          'The longest bridge is {1} units strong' \
         .format(bridgeBuilder.strongestBridge(), bridgeBuilder.longestBridge())
 
 

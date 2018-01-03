@@ -25,9 +25,7 @@ def mulNr(data):
     mulCount = 0
     try:
         while True:
-
             operation = operations[currentOperation]
-
             if 'jnz' in operation[0]:
                 if get(operation[1]) is not 0:
                     currentOperation += get(operation[2]) - 1
@@ -42,6 +40,7 @@ def mulNr(data):
 
 
 def hValue(data):
+
     def get(item):
         try:
             return int(item)
@@ -52,11 +51,8 @@ def hValue(data):
     currentOperation = 0
     registry = defaultdict(int)
     registry['a'] = 1
-    counter = 0
-    for _ in xrange(11):
-
+    for _ in xrange(11):  # first 10 operations set up the registry
         operation = operations[currentOperation]
-
         if 'jnz' in operation[0]:
             if get(operation[1]) is not 0:
                 currentOperation += get(operation[2]) - 1
@@ -67,7 +63,6 @@ def hValue(data):
     stepSize = abs(int(operations[30][2]))
     # converted algorithm from the assembly code (the input), check extras/day23interpreting.txt for details
     for b in range(registry['b'], registry['c'] + 1, stepSize):
-
         if not prime(b):
             registry['h'] += 1
 
